@@ -2,10 +2,14 @@
 import { pokemonType, typeColours } from "../data/pokemons.js";
 
 const { pokemon } = Astro.props;
-const mainType = typeColours[pokemon.types[0].type.name as keyof typeof typeColours] || "#fff";
+const mainType =
+  typeColours[pokemon.types[0].type.name as keyof typeof typeColours] || "#fff";
 ---
 
-<div class={pokemon.types[0].type.name + " pokemon-card"} style={`background: ${mainType};`}>
+<div
+  class={pokemon.types[0].type.name + " pokemon-card"}
+  style={`background-color: ${mainType};`}
+>
   <h2>
     {pokemon.name[0].toUpperCase() + pokemon.name.slice(1, pokemon.name.length)}
   </h2>
@@ -17,27 +21,30 @@ const mainType = typeColours[pokemon.types[0].type.name as keyof typeof typeColo
     src={pokemon.sprites.other["official-artwork"].front_default}
     alt={pokemon.name}
   />
-  <p class="pokemon-type">
-    Type:
-    {
-      await Promise.all(
-        pokemon.types.map(async (type: { type: { name: string } }) => {
-          const typeData = await pokemonType(type);
-          return (
-            <img
-              class="type-img"
-              src={
-                typeData.sprites["generation-viii"]["sword-shield"]["name_icon"]
-              }
-              alt={type.type.name}
-            />
-          );
-        })
-      )
-    }
-  </p>
-  <p>Height: {pokemon.height / 10} M</p>
-  <p>Weight: {pokemon.weight / 10} KG</p>
+  <div class="stats">
+    <p class="pokemon-type">
+      {
+        await Promise.all(
+          pokemon.types.map(async (type: { type: { name: string } }) => {
+            const typeData = await pokemonType(type);
+            return (
+              <img
+                class="type-img"
+                src={
+                  typeData.sprites["generation-viii"]["sword-shield"][
+                    "name_icon"
+                  ]
+                }
+                alt={type.type.name}
+              />
+            );
+          })
+        )
+      }
+    </p>
+    <p>Height: {pokemon.height / 10} M</p>
+    <p>Weight: {pokemon.weight / 10} KG</p>
+  </div>
 </div>
 
 <style>
@@ -64,7 +71,10 @@ const mainType = typeColours[pokemon.types[0].type.name as keyof typeof typeColo
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #50efef, #ff6f61);
+    background-image: url("/src/assets/pokeball_outline.png");
+    background-size: 60rem;
+    background-position: top left -8rem;
+    background-repeat: no-repeat;
   }
   .pokemon-img {
     width: 150px;
@@ -78,6 +88,12 @@ const mainType = typeColours[pokemon.types[0].type.name as keyof typeof typeColo
   .pokemon-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  .stats {
+    background-color: #ffffffbb;
+    padding: 0 2rem;
+    border-radius: 20px;
+    width: 80%;
   }
   .type-img {
     width: 5rem;
