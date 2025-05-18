@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
+import pokedexLogo from "../assets/pokedex_logo.webp";
 --- 
 <header class="header">
     <div class="logo">
         <a href="/">
-            <img src="../../public/pokedex_logo.webp" alt="Pokedex logo">
+            <Image src={pokedexLogo} alt="Pokedex logo" width={300} height={100} loading="lazy" />
         </a>
     </div>
     <nav>
