@@ -1,0 +1,105 @@
+---
+import { pokemonType, typeColours } from "../data/pokemons.js";
+
+const { pokemon } = Astro.props;
+const mainType = typeColours[pokemon.types[0].type.name as keyof typeof typeColours] || "#fff";
+---
+
+<div class={pokemon.types[0].type.name + " pokemon-card"} style={`background: ${mainType};`}>
+  <h2>
+    {pokemon.name[0].toUpperCase() + pokemon.name.slice(1, pokemon.name.length)}
+  </h2>
+  <h3>
+    #{pokemon.id.toString().padStart(3, "0")}
+  </h3>
+  <img
+    class="pokemon-img"
+    src={pokemon.sprites.other["official-artwork"].front_default}
+    alt={pokemon.name}
+  />
+  <p class="pokemon-type">
+    Type:
+    {
+      await Promise.all(
+        pokemon.types.map(async (type: { type: { name: string } }) => {
+          const typeData = await pokemonType(type);
+          return (
+            <img
+              class="type-img"
+              src={
+                typeData.sprites["generation-viii"]["sword-shield"]["name_icon"]
+              }
+              alt={type.type.name}
+            />
+          );
+        })
+      )
+    }
+  </p>
+  <p>Height: {pokemon.height / 10} M</p>
+  <p>Weight: {pokemon.weight / 10} KG</p>
+</div>
+
+<style>
+  .pokemon-card {
+    border-radius: 20px;
+    padding: 4rem;
+    margin: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #50efef, #ff6f61);
+  }
+  .pokemon-img {
+    width: 150px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+  }
+  .pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  .type-img {
+    width: 5rem;
+  }
+  .pokemon-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #333;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #666;
+    font-family: "Arial", sans-serif;
+    margin: 0.5rem 0 0.5rem 0;
+  }
+</style>
