@@ -1,11 +1,4 @@
-# Astro Starter Kit: Minimal
-
-```sh
-npm create astro@latest -- --template minimal
-```
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ddff935a-9bf7-4695-b2a4-b4fc591a83f5/deploy-status)](https://app.netlify.com/projects/alperopokedex/deploys)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 
