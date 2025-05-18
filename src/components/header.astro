@@ -1,119 +1,124 @@
 ---
---- 
+import { Image } from "astro:assets";
+import pokedexLogo from "../assets/pokedex_logo.webp";
+---
+
 <header class="header">
-    <div class="logo">
-        <a href="/">
-            <img src="../../src/assets/pokedex_logo.webp" alt="Pokedex logo" />
-        </a>
-    </div>
-    <nav>
-        <ul>
-            <button class="expand">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/about">Acerca de</a></li>
-            <li><a href="/pokemons">Pokemons</a></li>
-        </ul>
-    </nav>
+  <div class="logo">
+    <a href="/">
+      <Image src={pokedexLogo} alt="Pokedex logo" width="300" height="100" class="pokedex-logo-img" />
+      <!-- <img src="../assets/pokedex_logo.webp" alt="Pokedex logo" /> -->
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <button class="expand">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/about">Acerca de</a></li>
+      <li><a href="/pokemons">Pokemons</a></li>
+    </ul>
+  </nav>
 </header>
 
 <style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #50efef;
+    color: #fff;
+    border-radius: 100px;
+  }
+  .pokedex-logo-img {
+    width: 300px;
+    height: auto;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 2rem 2rem;
+    border-radius: 100px;
+    font-size: 2rem;
+  }
+  nav a:hover {
+    background-color: #fff;
+    color: #50efef;
+    transition: all 0.3s ease-in-out;
+  }
+  .expand {
+    display: none;
+  }
+  @media (max-width: 600px) {
     .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background: #50efef;
-        color: #fff;
-        border-radius: 100px;
+      flex-direction: column;
+      align-items: center;
     }
-    .header .logo img {
-        width: 300px;
-        height: auto;
+    .pokedex-logo-img {
+      width: 200px;
     }
     nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-        margin: 0;
-        padding: 0;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
     }
     nav a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 2rem 2rem;
-        border-radius: 100px;
-        font-size: 2rem;
+      font-size: 1.5rem;
+      padding: 0rem 2rem;
     }
-    nav a:hover {
-        background-color: #fff;
-        color: #50efef;
-        transition: all .3s ease-in-out;
+    nav ul li {
+      display: none;
     }
     .expand {
-        display: none;
+      background: none;
+      display: block;
+      border: none;
+      border-radius: 100px;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0 2rem;
     }
-    @media (max-width: 600px) {
-        .header {
-            flex-direction: column;
-            align-items: center;
-        }
-        .header .logo img {
-            width: 200px;
-        }
-        nav ul {
-            flex-direction: column;
-            gap: 0.5rem;
-            text-align: center;
-        }
-        nav a {
-            font-size: 1.5rem;
-            padding: 0rem 2rem;
-        }
-        nav ul li {
-            display: none;
-        }
-        .expand {
-            background: none;
-            display: block;
-            border: none;
-            border-radius: 100px;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0 2rem;
-        }
-        .expand span {
-            display: block;
-            width: 2rem;
-            height: 0.25rem;
-            background-color: #fff;
-            margin: 0.5rem auto;
-            transition: all 0.3s ease-in-out;
-        }
-        .expand:hover {
-            background: #fff;
-            transition: all 0.3s ease-in-out;
-        }
-        .expand:hover span {
-            background: #50efef;
-            transition: all 0.3s ease-in-out;
-        }
+    .expand span {
+      display: block;
+      width: 2rem;
+      height: 0.25rem;
+      background-color: #fff;
+      margin: 0.5rem auto;
+      transition: all 0.3s ease-in-out;
     }
+    .expand:hover {
+      background: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+    .expand:hover span {
+      background: #50efef;
+      transition: all 0.3s ease-in-out;
+    }
+  }
 </style>
 <script>
-    const expandButton = document.querySelector('.expand');
-    const navLinks = document.querySelectorAll('nav ul li');
+  const expandButton = document.querySelector(".expand");
+  const navLinks = document.querySelectorAll("nav ul li");
 
-    if (expandButton) {
-        expandButton.addEventListener('click', () => {
-            navLinks.forEach(link => {
-                const htmlLink = link as HTMLElement;
-                htmlLink.style.display = htmlLink.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    }
+  if (expandButton) {
+    expandButton.addEventListener("click", () => {
+      navLinks.forEach((link) => {
+        const htmlLink = link as HTMLElement;
+        htmlLink.style.display =
+          htmlLink.style.display === "block" ? "none" : "block";
+      });
+    });
+  }
 </script>
