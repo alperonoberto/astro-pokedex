@@ -30,6 +30,7 @@ const pageTitle = "Pokemons";
     font-family: "Arial", sans-serif;
   }
   .pokemon-grid {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1rem;
@@ -48,4 +49,18 @@ const pageTitle = "Pokemons";
       padding: 0 0.5rem;
     }
   }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+    .pokemon-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 0 0.5rem;
+    }
+  } 
 </style>
