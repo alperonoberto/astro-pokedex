@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { pokemonType, typeColours } from "../data/pokemons.js";
 
 const { pokemon } = Astro.props;
@@ -16,11 +17,12 @@ const mainType =
   <h3>
     #{pokemon.id.toString().padStart(3, "0")}
   </h3>
-  <img
+  <!-- <img
     class="pokemon-img"
     src={pokemon.sprites.other["official-artwork"].front_default}
     alt={pokemon.name}
-  />
+  /> -->
+  <Image class="pokemon-img" src={pokemon.sprites.other["official-artwork"].front_default} alt={pokemon.name} width="150" height="150" />
   <div class="stats">
     <p class="pokemon-type">
       {
@@ -28,7 +30,16 @@ const mainType =
           pokemon.types.map(async (type: { type: { name: string } }) => {
             const typeData = await pokemonType(type);
             return (
-              <img
+              // <img
+              //   class="type-img"
+              //   src={
+              //     typeData.sprites["generation-viii"]["sword-shield"][
+              //       "name_icon"
+              //     ]
+              //   }
+              //   alt={type.type.name}
+              // />
+              <Image
                 class="type-img"
                 src={
                   typeData.sprites["generation-viii"]["sword-shield"][
@@ -36,6 +47,8 @@ const mainType =
                   ]
                 }
                 alt={type.type.name}
+                width="50"
+                height="50"
               />
             );
           })
@@ -97,6 +110,7 @@ const mainType =
   }
   .type-img {
     width: 5rem;
+    height: auto;
   }
   .pokemon-type {
     display: flex;
