@@ -1,8 +1,49 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro';
-const pageTitle = 'Acerca de';
+import BaseLayout from "../layouts/baseLayout.astro";
+const pageTitle = "Acerca de";
 ---
 
-<BaseLayout pageTitle={ pageTitle }>
-    <h1>Acerca de</h1>
+<BaseLayout pageTitle={pageTitle}>
+  <h1>Acerca de</h1>
+  <p>
+    Esta Pokédex es un proyecto web desarrollado con Astro que muestra
+    información de diferentes Pokémon de manera visual y responsiva.
+  </p>
+  <ul>
+    <li>Consulta datos como nombre, tipo, altura y peso de cada Pokémon.</li>
+    <li>El diseño es adaptable a dispositivos móviles y de escritorio.</li>
+    <li>Los colores y estilos se adaptan según el tipo de Pokémon.</li>
+    <li>Proyecto educativo y sin fines de lucro.</li>
+  </ul>
+  <p>
+    Hecho por un entusiasta de la programación y los Pokémon.<br />
+    ¡Gracias por visitar!
+  </p>
 </BaseLayout>
+<style>
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin: 20px 0;
+        color: #333;
+        font-family: "Arial", sans-serif;
+    }
+    p {
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 20px 0;
+        color: #666;
+        font-family: "Arial", sans-serif;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        text-align: center;
+    }
+    li {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #666;
+        font-family: "Arial", sans-serif;
+    }
+</style>

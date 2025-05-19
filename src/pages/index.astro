@@ -1,8 +1,120 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro';
-const pageTitle = 'Inicio';
+import { Image } from "astro:assets";
+import pikachuPixel from "../assets/pikachu.png";
+import BaseLayout from "../layouts/baseLayout.astro";
+
+const pageTitle = "Inicio";
+const logoWidth = 300;
+const logoHeight = 300;
 ---
 
-<BaseLayout pageTitle={ pageTitle }>
-	<h1>Inicio</h1>
+<BaseLayout pageTitle={pageTitle}>
+  <div class="main-wrpapper">
+    <Image
+      class="pikachu-logo"
+      src={pikachuPixel}
+      alt="Pokedex logo"
+      width={logoWidth}
+      height={logoHeight}
+    />
+    <div class="bottom-wrapper">
+      <h1>¡Bienvenido a la Pokédex!</h1>
+      <p>
+        Esta Pokédex es un proyecto web desarrollado con Astro que muestra
+        información de diferentes Pokémon de manera visual y responsiva. Explora
+        información de tus Pokémon favoritos, descubre sus tipos, alturas, pesos
+        y mucho más. El diseño es visual, colorido y totalmente responsivo.
+      </p>
+
+      <a href="/pokemons" style=" "> Ver Pokémons </a>
+    </div>
+  </div>
 </BaseLayout>
+<style>
+	.pikachu-logo {
+	width: 400px;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+  }
+  .main-wrpapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 20px 0;
+    color: #333;
+    font-family: "Arial", sans-serif;
+  }
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #666;
+    font-family: "Arial", sans-serif;
+    width: 80%;
+    max-width: 800px;
+    line-height: 1.7rem;
+  }
+  a {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    background: #50efef;
+    color: #222;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  a:hover {
+    background-color: #666;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .bottom-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  @media (max-width: 600px) {
+	.pikachu-logo {
+	  width: 200px;
+	}
+    .main-wrpapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+    a {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    a {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+</style>
