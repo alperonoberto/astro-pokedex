@@ -2,7 +2,7 @@
 
 ## 🌐 URL
 
-[![Alperopokedex](https://alperopokedex.netlify.app)]
+[Alperopokedex](https://alperopokedex.netlify.app)
 
 ## 🚧 TO DO LIST
 
