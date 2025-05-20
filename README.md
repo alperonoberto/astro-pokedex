@@ -6,6 +6,9 @@
 
 ## 🚧 TO DO LIST
 
+- [x] Pokemon page
+- [x] Landing page
+- [x] About page
 - [ ] Mobile responsive
 - [ ] Pokemon search
 - [ ] Pokemon filtering
