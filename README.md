@@ -6,10 +6,10 @@
 
 ## 🚧 TO DO LIST
 
-- [] Mobile responsive
-- [] Pokemon search
-- [] Pokemon filtering
-- [] Pokemon view pagination
-- [] Pokemon detail page
-- [] Better design
-- [] App icon
+- [ ] Mobile responsive
+- [ ] Pokemon search
+- [ ] Pokemon filtering
+- [ ] Pokemon view pagination
+- [ ] Pokemon detail page
+- [ ] Better design
+- [ ] App icon
