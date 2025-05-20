@@ -28,12 +28,11 @@ main, .main-content, #root {
   flex-direction: column;
   align-items: center;
 }
-@media (max-width: 430px) {
+@media (max-width: 600px) {
   main, .main-content, #root, body {
     width: 100%;
     padding: 0;
     margin: 0;
-    max-width: 100%;
   }
   
 }
