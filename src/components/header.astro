@@ -6,7 +6,13 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
 <header class="header">
   <div class="logo">
     <a href="/">
-      <Image src={pokedexLogo} alt="Pokedex logo" width="300" height="100" class="pokedex-logo-img" />
+      <Image
+        src={pokedexLogo}
+        alt="Pokedex logo"
+        width="300"
+        height="100"
+        class="pokedex-logo-img"
+      />
       <!-- <img src="../assets/pokedex_logo.webp" alt="Pokedex logo" /> -->
     </a>
   </div>
@@ -17,6 +23,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
         <span></span>
         <span></span>
       </button>
+      
       <li><a href="/">Inicio</a></li>
       <li><a href="/about">Acerca de</a></li>
       <li><a href="/pokemons">Pokemons</a></li>
@@ -56,7 +63,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
   nav a:hover {
     background-color: #fff;
     color: #50efef;
-    transition: all 0.3s ease-in-out;
+    transition: all ease 1s;
   }
   .expand {
     display: none;
@@ -98,15 +105,20 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
       height: 0.25rem;
       background-color: #fff;
       margin: 0.5rem auto;
-      transition: all 0.3s ease-in-out;
+      border-radius: 10px;
     }
     .expand:hover {
       background: #fff;
-      transition: all 0.3s ease-in-out;
     }
     .expand:hover span {
       background: #50efef;
-      transition: all 0.3s ease-in-out;
+    }
+  }
+  @media (max-width: 430px) {
+    .header {
+      width: 100%;
+      margin: 0;
+      border-radius: 0 0 70% 70%;
     }
   }
 </style>
@@ -116,6 +128,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
 
   if (expandButton) {
     expandButton.addEventListener("click", () => {
+      !expandButton.classList.contains("open") ? expandButton.classList.add("open") : expandButton.classList.remove("open")
       navLinks.forEach((link) => {
         const htmlLink = link as HTMLElement;
         htmlLink.style.display =
