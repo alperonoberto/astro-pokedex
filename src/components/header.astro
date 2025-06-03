@@ -10,6 +10,8 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
         src={pokedexLogo}
         alt="Pokedex logo"
         width="300"
+        decoding="async"
+        loading="lazy"
         height="100"
         class="pokedex-logo-img"
       />
@@ -37,7 +39,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: #50efef;
+    background: var(--main-accent-color);
     color: #fff;
     border-radius: 100px;
   }
@@ -62,8 +64,8 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
   }
   nav a:hover {
     background-color: #fff;
-    color: #50efef;
-    transition: all ease 1s;
+    color: var(--main-accent-color);
+    transition: all ease .3s;
   }
   .expand {
     display: none;
@@ -91,6 +93,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
       display: none;
     }
     .expand {
+      width: 12rem;
       background: none;
       display: block;
       border: none;
@@ -111,7 +114,7 @@ import pokedexLogo from "../assets/pokedex_logo.webp";
       background: #fff;
     }
     .expand:hover span {
-      background: #50efef;
+      background: var(--main-accent-color);
     }
   }
   @media (max-width: 600px) {

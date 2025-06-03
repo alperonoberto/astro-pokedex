@@ -14,6 +14,8 @@ const logoHeight = 300;
       class="pikachu-logo"
       src={pikachuPixel}
       alt="Pokedex logo"
+      decoding="async"
+      loading="lazy"
       width={logoWidth}
       height={logoHeight}
     />
@@ -26,7 +28,9 @@ const logoHeight = 300;
         y mucho más. El diseño es visual, colorido y totalmente responsivo.
       </p>
 
-      <a href="/pokemons" style=" "> Ver Pokémons </a>
+      <button class="view-pokemons">
+        <a href="/pokemons">Ver Pokémons</a>
+      </button>
     </div>
   </div>
 </BaseLayout>
@@ -60,22 +64,31 @@ const logoHeight = 300;
     max-width: 800px;
     line-height: 1.7rem;
   }
-  a {
+  .view-pokemons {
     text-align: center;
     font-size: 1.2rem;
     margin-top: 2rem;
-    background: #50efef;
-    color: #222;
+    background: #007bff;
     font-weight: bold;
     padding: 1rem 2rem;
     border-radius: 2rem;
-    text-decoration: none;
+    border: none;
     font-size: 1.2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
-  a:hover {
-    background-color: #666;
+  .view-pokemons a {
     color: #fff;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+  }
+  .view-pokemons:hover {
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .view-pokemons:hover > a {
+    color: #007bff;
     transition: all 0.3s ease-in-out;
   }
   .bottom-wrapper {
@@ -88,21 +101,32 @@ const logoHeight = 300;
   @media (max-width: 600px) {
 	.pikachu-logo {
 	  width: 200px;
+    position: absolute;
+    top: 16rem;
+    right: -1.5rem;
 	}
-    .main-wrpapper {
+    .main-wrapper {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+    .bottom-wrapper {
+      position: relative;
+      display: block;
+      margin: 1rem;
     }
     h1 {
       font-size: 2rem;
     }
     p {
       font-size: 1.1rem;
+      text-align: start;
+      width: 70%;
     }
-    a {
+    .view-pokemons {
       font-size: 1rem;
-      padding: 0.5rem 1rem;
+      position: absolute;
+      left: 20%;
     }
   }
   @media (max-width: 500px) {
