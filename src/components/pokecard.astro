@@ -17,7 +17,13 @@ const mainType =
   <h3>
     #{pokemon.id.toString().padStart(3, "0")}
   </h3>
-  <Image class="pokemon-img" src={pokemon.sprites.other["official-artwork"].front_default} alt={pokemon.name} width="150" height="150" />
+  <Image
+    class="pokemon-img"
+    src={pokemon.sprites.other["official-artwork"].front_default}
+    alt={pokemon.name}
+    width="150"
+    height="150"
+  />
   <div class="stats">
     <p class="pokemon-type">
       {
@@ -32,17 +38,31 @@ const mainType =
                     "name_icon"
                   ]
                 }
+                decoding="async"
+                loading="lazy"
                 alt={type.type.name}
                 width="50"
                 height="50"
               />
             );
-          })
+          }),
         )
       }
     </p>
-    <p>Altura: {(pokemon.height / 10).toLocaleString(undefined, { maximumFractionDigits: 2 })} m</p>
-    <p>Peso: {(pokemon.weight / 10).toLocaleString(undefined, { maximumFractionDigits: 2 })} kg</p>
+    <p>
+      Altura: {
+        (pokemon.height / 10).toLocaleString(undefined, {
+          maximumFractionDigits: 2,
+        })
+      } m
+    </p>
+    <p>
+      Peso: {
+        (pokemon.weight / 10).toLocaleString(undefined, {
+          maximumFractionDigits: 2,
+        })
+      } kg
+    </p>
   </div>
 </div>
 
