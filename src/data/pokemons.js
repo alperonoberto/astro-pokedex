@@ -1,9 +1,15 @@
 export const pokemonList = []
 
-for(let i = 0; i < 100; i++) {
+for(let i = 0; i < 300; i++) {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
     .then(response => response.json())
     .then(data => pokemonList.push(data));
+}
+
+export async function fetchPokemon(string) {
+	await fetch(`https://pokeapi.co/v2/pokemon/${string}`)
+	.then(response => response.json())
+	.then(data => console.log(data))
 }
 
 export async function pokemonType(type) {
