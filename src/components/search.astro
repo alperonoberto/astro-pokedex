@@ -1,8 +1,8 @@
 ---
-import { fetchPokemon } from "../data/pokemons.js" 
+// import { fetchPokemon } from "../data/pokemons.js"
 ---
 
-<form class="pokemon-search-form">
+<form class="pokemon-search-form" onsubmit="return false">
   <input
     type="text"
     class="pokemon-search-input"
@@ -173,7 +173,7 @@ import { fetchPokemon } from "../data/pokemons.js"
   }
 </style>
 <script>
-import { fetchPokemon } from "../data/pokemons";
+// import { fetchPokemon } from "../data/pokemons";
 
   // JavaScript to handle the filter dropdown toggle
   const filterButton = document.querySelector(".pokemon-filter-button");
@@ -182,16 +182,6 @@ import { fetchPokemon } from "../data/pokemons";
   const filterDropdownMenu = document.querySelector(
     ".pokemon-filter-dropdown-menu"
   );
-
-  const pokemonSearchForm = document.querySelector(".pokemon-search-form")
-  const pokemonSearchInput = document.querySelector(".pokemon-search-input")
-
-  pokemonSearchInput?.addEventListener("onsubmit", (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    fetchPokemon(pokemonSearchInput?.textContent)
-    return false
-  })
 
   filterButton?.addEventListener("click", () => {
     filterDownArrow?.classList.toggle("hidden");

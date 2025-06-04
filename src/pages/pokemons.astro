@@ -1,10 +1,14 @@
 ---
-import { pokemonList } from "../data/pokemons";
+import { fetchPokemonPage, fetchPokemon } from "../data/pokemons";
 import BaseLayout from "../layouts/baseLayout.astro";
 import Pokecard from "../components/pokecard.astro";
 import Search from "../components/search.astro";
 
 const pageTitle = "Pokemons";
+const pokemonPage = await fetchPokemonPage(0)
+const pokemonList:any = []
+pokemonPage.map(url => fetchPokemon(url).then(p => pokemonList.push(p)))
+console.log(pokemonList)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -12,7 +16,12 @@ const pageTitle = "Pokemons";
   <h2>Una lista de todos los Pokemons registrados disponibles</h2>
   <Search />
   <div class="pokemon-grid">
-    {pokemonList.map((pokemon: any) => <Pokecard pokemon={pokemon} />)}
+    <!-- {pokemonPage.map((pokemonUrl: any) => {fetchPokemon(pokemonUrl).then(pokemon => <Pokecard pokemon={pokemon} />)})} -->
+    <!-- {pokemonPage.map((pokemonUrl: any) => <Pokecard pokemon={fetchPokemon(pokemonUrl).then(p => {return p})} />)} -->
+  </div>
+
+  <div class="paginator">
+    
   </div>
 
   <dialog id="pokemon-dialog">
@@ -133,6 +142,7 @@ const pageTitle = "Pokemons";
 <script>
   const pokecard = document.querySelectorAll(".pokemon-card");
 
+  // Create a modal dialog for each pokecard displayed
   for (let i = 0; i < pokecard.length; i++) {
     pokecard[i].addEventListener("click", () => {
       let pokemon = pokecard[i];
