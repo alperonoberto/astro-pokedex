@@ -16,4 +16,3 @@
 - [ ] Pokemon detail page
 - [ ] Better design
 - [ ] App icon
-- [ ] Loading spinner for Pokemon images
