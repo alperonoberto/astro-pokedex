@@ -1,19 +1,28 @@
 ---
-import { pokemonList } from "../data/pokemons";
+import { fetchPokemonPage, fetchPokemon } from "../data/pokemons";
 import BaseLayout from "../layouts/baseLayout.astro";
 import Pokecard from "../components/pokecard.astro";
 import Search from "../components/search.astro";
 
 const pageTitle = "Pokemons";
-// const pokemonInfo = fetch(``)
+const pokemonPage = await fetchPokemonPage(0)
+const pokemonList:any = []
+pokemonPage.map(url => fetchPokemon(url).then(p => pokemonList.push(p)))
+console.log(pokemonList)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h1>{pageTitle}</h1>
   <h2>Una lista de todos los Pokemons registrados disponibles</h2>
   <Search />
+  <!-- testing -->
   <div class="pokemon-grid">
-    {pokemonList.map((pokemon: any) => <Pokecard pokemon={pokemon} />)}
+    <!-- {pokemonPage.map((pokemonUrl: any) => {fetchPokemon(pokemonUrl).then(pokemon => <Pokecard pokemon={pokemon} />)})} -->
+    <!-- {pokemonPage.map((pokemonUrl: any) => <Pokecard pokemon={fetchPokemon(pokemonUrl).then(p => {return p})} />)} -->
+  </div>
+
+  <div class="paginator">
+    
   </div>
 
   <dialog id="pokemon-dialog">
@@ -74,28 +83,7 @@ const pageTitle = "Pokemons";
       margin: 0 auto;
       z-index: 999;
     }
-
-    #pokemon-dialog {
-      width: 60%;
-      height: 70%;
-      border-radius: 20px;
-      text-align: center;
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      font-weight: bold;
-      background-color: var(--secondary-accent-color);
-    }
-    #pokemon-dialog::backdrop {
-      backdrop-filter: blur(3px);
-    }
-
-    .info-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-
+    
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -129,11 +117,13 @@ const pageTitle = "Pokemons";
       }
     }
   </style>
+
 </BaseLayout>
 
 <script>
   const pokecard = document.querySelectorAll(".pokemon-card");
 
+  // Create a modal dialog for each pokecard displayed
   for (let i = 0; i < pokecard.length; i++) {
     pokecard[i].addEventListener("click", () => {
       let pokemon = pokecard[i];

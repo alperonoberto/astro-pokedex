@@ -1,18 +1,32 @@
 export const pokemonList = []
 
-for(let i = 0; i < 100; i++) {
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
-    .then(response => response.json())
-    .then(data => pokemonList.push(data));
+for (let i = 0; i < 3; i++) {
+	await fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
+		.then(response => response.json())
+		.then(data => pokemonList.push(data));
+}
+
+export async function fetchPokemonPage(offset) {
+	const page = []
+	await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=100`)
+		.then(response => response.json())
+		.then(data => page.push(...data.results.map(p => p.url)))
+	return page
+}
+
+export function fetchPokemon(string) {
+	return fetch(string)
+	.then(response => response.json())
+	.then(data => data)
 }
 
 export async function pokemonType(type) {
-    const response = await fetch(`https://pokeapi.co/api/v2/type/${type.type.name}`);
-    if (!response.ok) {
-        throw new Error(`Error al obtener pokemons: ${response.statusText}`);
-    }
-    const data = await response.json();
-    return data;
+	const response = await fetch(`https://pokeapi.co/api/v2/type/${type.type.name}`);
+	if (!response.ok) {
+		throw new Error(`Error al obtener pokemons: ${response.statusText}`);
+	}
+	const data = await response.json();
+	return data;
 };
 
 
