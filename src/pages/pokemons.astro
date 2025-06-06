@@ -1,14 +1,14 @@
 ---
-import { fetchPokemonPage, fetchPokemon } from "../data/pokemons";
+import { pokemonList, fetchPokemonPage, fetchPokemon } from "../data/pokemons";
 import BaseLayout from "../layouts/baseLayout.astro";
 import Pokecard from "../components/pokecard.astro";
 import Search from "../components/search.astro";
 
 const pageTitle = "Pokemons";
-const pokemonPage = await fetchPokemonPage(0)
-const pokemonList:any = []
-pokemonPage.map(url => fetchPokemon(url).then(p => pokemonList.push(p)))
-console.log(pokemonList)
+// const pokemonPage = await fetchPokemonPage(0)
+// const pokemonList:any = []
+// pokemonPage.map(url => fetchPokemon(url).then(p => pokemonList.push(p)))
+// console.log(pokemonList)
 ---
 
 <BaseLayout pageTitle={pageTitle}>
