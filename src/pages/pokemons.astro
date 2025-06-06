@@ -83,28 +83,7 @@ console.log(pokemonList)
       margin: 0 auto;
       z-index: 999;
     }
-
-    #pokemon-dialog {
-      width: 60%;
-      height: 70%;
-      border-radius: 20px;
-      text-align: center;
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      font-weight: bold;
-      background-color: var(--secondary-accent-color);
-    }
-    #pokemon-dialog::backdrop {
-      backdrop-filter: blur(3px);
-    }
-
-    .info-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-
+    
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -138,6 +117,7 @@ console.log(pokemonList)
       }
     }
   </style>
+
 </BaseLayout>
 
 <script>
