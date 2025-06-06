@@ -1,6 +1,6 @@
 export const pokemonList = []
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 150; i++) {
 	await fetch(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
 		.then(response => response.json())
 		.then(data => pokemonList.push(data));
